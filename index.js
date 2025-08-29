@@ -5,7 +5,7 @@ const app = require("./src/app");
 
 const PORT = process.env.PORT || 3000;
 
-// Serve static frontend files (index.html inside public)
+// ✅ Serve static frontend BEFORE any route fallbacks
 app.use(express.static(path.join(__dirname, "public")));
 
 app.listen(PORT, () => {

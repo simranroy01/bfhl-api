@@ -10,10 +10,10 @@ const app = express();
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 
-// Serve the BFHL API logic at /bfhl
+// API routes
 app.use("/bfhl", bfhlRoute);
 
-// Info route (returns JSON welcome message)
+// Info route (JSON welcome message)
 app.get("/info", (req, res) => {
   res.json({
     message: "🚀 Welcome to BFHL API",
@@ -25,10 +25,7 @@ app.get("/info", (req, res) => {
   });
 });
 
-// Catch-all for invalid routes
-app.use((req, res) => {
-  res.status(404).json({ error: "Route not found" });
-});
+// ⚠️ Remove the catch-all here
+// The 404 handler should stay in index.js, *after* static middleware if needed
 
 module.exports = app;
-
